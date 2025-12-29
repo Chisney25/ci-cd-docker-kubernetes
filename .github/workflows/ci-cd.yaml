@@ -7,22 +7,21 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.10"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-    - name: Install dependencies
-      run: |
-        pip install -r app/requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r app/requirements.txt
 
-    - name: Run tests
-      run: |
-        echo "No tests yet, placeholder"
+      - name: Run tests
+        run: |
+          echo "No tests yet, placeholder"
 
   docker-build-push:
     needs: build-and-test
@@ -38,9 +37,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          - name: Build and push Docker image
-  run: |
-    - name: Build and push Docker image
-  run: |
-    docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-ci-cd:latest .
-    docker push ${{ secrets.DOCKER_USERNAME }}/flask-ci-cd:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-ci-cd:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/flask-ci-cd:latest
